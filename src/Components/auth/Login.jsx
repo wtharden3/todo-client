@@ -46,7 +46,7 @@ const Login = (props) => {
           <Input
             type="email"
             name="email"
-            id="email"
+            id="emailLI"
             placeholder="Please Enter Your Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
@@ -62,7 +62,7 @@ const Login = (props) => {
           <Input
             type="password"
             name="password"
-            id="password"
+            id="passwordLI"
             placeholder="Please Enter Your Password"
             value={password}
             onChange={e => setPassword(e.target.value)}

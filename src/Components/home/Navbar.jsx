@@ -1,7 +1,11 @@
 import{Nav, NavItem, Button} from 'reactstrap';
 
-const Navbar = () => {
+const Navbar = (props) => {
   //const [token, setToken] = useState()
+  const logOut = () => {
+    props.setToken(undefined);
+  }
+
   return(
     <div className="col-3">
       <p>Vertical Nav</p>
@@ -18,7 +22,9 @@ const Navbar = () => {
         <NavItem>
           NavItem 1
         </NavItem>
-        <Button>Log Out</Button>
+        <NavItem>
+          <Button onClick={logOut}>Log Out</Button>
+        </NavItem>
       </Nav>
     </div>
   )
