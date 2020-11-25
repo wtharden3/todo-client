@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Home from './Components/home/Home';
 import Auth from './Components/auth/Auth';
+//import ListIndex from './lists/ListIndex';
 
 const App = () => {
   const [token, setToken] = useState(undefined);
@@ -8,6 +9,10 @@ const App = () => {
   return (
     <div>
       {token ? (
+        <div>
+        
+        <Home token={token} setToken={setToken}/>
+        </div>
         // <div className="row">
         //   <Navbar />
         //   <h1 className="col-9">
@@ -15,7 +20,6 @@ const App = () => {
         //     button
         //   </h1>
         // </div>
-        <Home token={token} setToken={setToken}/>
       ) : (
         <Auth token={token} setToken={setToken} />
       )}
