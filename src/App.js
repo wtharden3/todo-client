@@ -5,6 +5,7 @@ const App = () => {
     <div>
       Hello
       <Auth />
+      {/**we need to toggle between Auth and Front Page of app; if token is not undefined, show Home */}
     </div>
   );
 };

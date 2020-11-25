@@ -35,6 +35,7 @@ const Signup = () => {
   return (
     <div className="col-md-6">
       <Form onSubmit={handleSubmit}>
+      <h1>Signup</h1>
         <FormGroup>
           <Label for="firstname">First Name</Label>
           <Input
