@@ -3,11 +3,33 @@ import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const ListCreate = (props) => {
     const [date, setDate] = useState('');
-    const [listname, setListname] = useState('');
+    const [listName, setListname] = useState('');
     const [duration, setDuration] = useState('');
-    const [timedue, setTimedue] = useState('');
+    const [timeDue, setTimedue] = useState('');
     const [description, setDescription] = useState('');
     const [isChecked, setIsChecked] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:4000/list/', {
+            method: 'POST',
+            body: JSON.stringify({list: {date: date, listname: listname, description: description, duration: duration, timedue: timedue, description: description, isChecked: isChecked}}),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        }) .then((res) => res.json())
+        .then((listData) => {
+            console.log(logData);
+            setDate('');
+            setListname('');
+            setDuration('');
+            setTimedue('');
+            setDescription('');
+            setIsChecked('');
+            props.fetchLists();
+        })
+    }
 
     return(
         <>
@@ -18,8 +40,8 @@ const ListCreate = (props) => {
                 <Input name="date" value={date} onChange={(e) => setDate(e.target.value)}/>
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="listname"/>
-                <Input name="listname" value={listname} onChange={(e) => setListname(e.target.value)}/>
+                <Label htmlFor="listName"/>
+                <Input name="listName" value={listName} onChange={(e) => setListname(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="description"/>
@@ -30,8 +52,8 @@ const ListCreate = (props) => {
                 <Input name="duration" value={duration} onChange={(e) => setDuration(e.target.value)}/>
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="timedue"/>
-                <Input name="timedue" value={timedue} onChange={(e) => setTimedue(e.target.value)}/>
+                <Label htmlFor="timeDue"/>
+                <Input name="timeDue" value={timeDue} onChange={(e) => setTimedue(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="isChecked"/>

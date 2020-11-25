@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import ListCreate from './ListCreate';
+import Search from './lists/ListSearch';
 
 const ListIndex = (props) => {
     const[lists, setLists] = useState([]);
@@ -30,6 +31,7 @@ const ListIndex = (props) => {
                 </Col>
                 <Col md="9">
                     <h2>Log a list to see a table. This will be added in later pages.</h2>
+                    <Search />
                 </Col>
             </Row>
         </Container>

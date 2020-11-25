@@ -3,6 +3,7 @@ import Sitebar from './home/Navbar';
 import Auth from './auth/Auth';
 import ListIndex from './lists/ListIndex';
 
+
 const App = () => {
   const [sessionToken, setSessionToken] = useState('');
 
@@ -22,7 +23,7 @@ const App = () => {
     localStorage.clear();
     setSessionToken('');
   }
-  
+
   const protectedViews = () => {
     return (sessionToken === localStorage.getItem('token') ? <ListIndex token ={sessionToken}/>
     : <Auth updateToken={updateToken}/>)
@@ -31,6 +32,7 @@ const App = () => {
     <div>
       <Sitebar clearToken={clearToken}/>
       {protectedViews()}
+
     </div>
   );
 }
