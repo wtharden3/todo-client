@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState(undefined);
+  //const [token, setToken] = useState(undefined);
 
   useEffect(() => {
-    localStorage.setItem('token', token);
-  }, [token]);
+    localStorage.setItem('token', props.token);
+  }, [props.token]);
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -30,11 +30,11 @@ const Login = () => {
       .then(res => res.json())
       .then(data => {
         console.log('data.token=====> ', data.token);
-        setToken(data.token);
+        props.setToken(data.token);
       })
       .catch(err => console.log(err));
 
-    return token;
+    return props.token;
   };
 
   return (

@@ -1,11 +1,11 @@
 import Login from './Login';
 import Signup from './Signup';
 
-const Auth = () => {
+const Auth = (props) => {
   return(
     <div className="container">
       <div className="row">
-        <Login />
+        <Login token={props.token} setToken={props.setToken}/>
         <Signup />
       </div>
     </div>
