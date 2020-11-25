@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from './Components/home/Navbar';
 import Auth from './Components/auth/Auth';
 
 const App = () => {
@@ -8,10 +9,13 @@ const App = () => {
     <div>
       Hello
       {token ? (
-        <h1>
-          This is where the Home Page will go and it needs to contain a Logout
-          button
-        </h1>
+        <div className="row">
+          <Navbar />
+          <h1 className="col-9">
+            This is where the Home Page will go and it needs to contain a Logout
+            button
+          </h1>
+        </div>
       ) : (
         <Auth token={token} setToken={setToken} />
       )}
