@@ -30,7 +30,8 @@ const Login = (props) => {
       .then(res => res.json())
       .then(data => {
         console.log('data.token=====> ', data.token);
-        props.setToken(data.token);
+        //props.setToken(data.token);
+        props.updateToken(data.token);
       })
       .catch(err => console.log(err));
 

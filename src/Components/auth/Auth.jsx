@@ -5,7 +5,7 @@ const Auth = (props) => {
   return(
     <div className="container">
       <div className="row">
-        <Login token={props.token} setToken={props.setToken}/>
+        <Login updateToken={props.updateToken}/>
         <Signup />
       </div>
     </div>

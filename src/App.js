@@ -6,23 +6,17 @@ import Auth from './Components/auth/Auth';
 const App = () => {
   const [token, setToken] = useState(undefined);
 
+  const updateToken = newToken => {
+    setToken(newToken);
+  }
+
+  const viewConductor = () => {
+    return token ? <Home token={token} setToken={setToken}/> : <Auth updateToken={updateToken} />
+  }
+
   return (
     <div>
-      {token ? (
-        <div>
-        
-        <Home token={token} setToken={setToken}/>
-        </div>
-        // <div className="row">
-        //   <Navbar />
-        //   <h1 className="col-9">
-        //     This is where the Home Page will go and it needs to contain a Logout
-        //     button
-        //   </h1>
-        // </div>
-      ) : (
-        <Auth token={token} setToken={setToken} />
-      )}
+      {viewConductor()}
       {/**
       we need to toggle between Auth and Front Page of app; 
       if token is not undefined, show Auth which give the option 
@@ -30,5 +24,44 @@ const App = () => {
     </div>
   );
 };
+
+// import React, {useState, useEffect} from 'react';
+// import Sitebar from './home/Navbar';
+// import Auth from './auth/Auth';
+// import ListIndex from './lists/ListIndex';
+
+
+// const App = () => {
+//   const [sessionToken, setSessionToken] = useState('');
+
+//   useEffect(() => {
+//     if (localStorage.getItem('token')){
+//       setSessionToken(localStorage.getItem('token'));
+//     }
+//   }, [])
+
+//   const updateToken = (newToken) => {
+//     localStorage.setItem('token', newToken);
+//     setSessionToken(newToken);
+//     console.log(sessionToken);
+//   }
+
+//   const clearToken = () => {
+//     localStorage.clear();
+//     setSessionToken('');
+//   }
+
+//   const protectedViews = () => {
+//     return (sessionToken === localStorage.getItem('token') ? <ListIndex token ={sessionToken}/>
+//     : <Auth updateToken={updateToken}/>)
+//   }
+//   return(
+//     <div>
+//       <Sitebar clearToken={clearToken}/>
+//       {protectedViews()}
+
+//     </div>
+//   );
+// }
 
 export default App;

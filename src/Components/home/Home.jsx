@@ -6,8 +6,7 @@ const Home = (props) => {
     <div className="row">
           <Navbar token={props.token} setToken={props.setToken}/>
           <div className="col-9">
-            This is where the Home Page will go and it needs to contain a Logout
-            button
+            Insert List components here
             <ListIndex token={props.token}/>
           </div>
 
