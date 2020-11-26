@@ -3,16 +3,16 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalBody } from "reactst
 
 const ListEdit = (props)
     => {
-    const [editlistname, setEditlistName] = useState(props.workoutToUpdate.listname);
-    const [editDur, setEditDur] = useStae(props.workoutToUpdate.duration);
-    const [edittimedue, setEdittimeDue] = useStae(props.workoutToUpdate.timedue);
-    const [editDesc, setEditDesc] = useState(props.workoutToUpdate.description);
-    const [editisChec, setEditisChec] = useState(props.workoutToUpdate.isChecked);
+    const [editlistname, setEditlistName] = useState(props.listToUpdate.listname);
+    const [editDur, setEditDur] = useStae(props.listToUpdate.duration);
+    const [edittimedue, setEdittimeDue] = useStae(props.listToUpdate.timedue);
+    const [editDesc, setEditDesc] = useState(props.listToUpdate.description);
+    const [editisChec, setEditisChec] = useState(props.listToUpdate.isChecked);
     
 
     const listUpdate = (event, list) => {
         event.preventDefault();
-        fetch(`http://localhost3000/list/${props.listToUpdate.id}`, {
+        fetch(`http://localhost4000/list/${props.listToUpdate.listName}`, {
             method: "PUT",
             body: JSON.stringify({
               log: {

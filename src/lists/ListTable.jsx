@@ -3,7 +3,7 @@ import { Table, Button } from "reactstrap";
 
 const ListTable = (props) => {
   const deleteList = (list) => {
-    fetch(`http://localhost:3000/list/${list.id}`, {
+    fetch(`http://localhost:4000/list/${list.listName}`, {
       method: "DELETE",
       headers: new headers({
         "Content-type": "application/json",
