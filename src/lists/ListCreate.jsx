@@ -37,23 +37,23 @@ const ListCreate = (props) => {
         <Form>
             <FormGroup>
                 <Label htmlFor="date"/>
-                <Input name="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+                <Input name="date" placeholder="Enter today's date: " value={date} onChange={(e) => setDate(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="listName"/>
-                <Input name="listName" value={listName} onChange={(e) => setListname(e.target.value)}/>
+                <Input name="listName" placeholder="Name of task: " value={listName} onChange={(e) => setListname(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="description"/>
-                <Input name="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                <Input name="description" placeholder="Enter a brief description of the task: " value={description} onChange={(e) => setDescription(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="duration"/>
-                <Input name="duration" value={duration} onChange={(e) => setDuration(e.target.value)}/>
+                <Input name="duration" placeholder="Estimated time to completion: " value={duration} onChange={(e) => setDuration(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="timeDue"/>
-                <Input name="timeDue" value={timeDue} onChange={(e) => setTimedue(e.target.value)}/>
+                <Input name="timeDue" placeholder="Needs completed by: " value={timeDue} onChange={(e) => setTimedue(e.target.value)}/>
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="isChecked"/>

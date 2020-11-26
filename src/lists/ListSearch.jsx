@@ -1,3 +1,44 @@
+import {useState, useEffect} from 'react';
+import List from './list/list';
+
+const Lists = (props) => {
+    const [list, setLists] = useStata([]);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/lists/getalllists', {
+            method: 'GET',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : props.token
+            }
+        })
+        .then(res => res.json())
+        .then(data => setLists(data))
+    }, [])
+
+    return(
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date: </th>
+                        <th>Task Name: </th>
+                        <th>Duration: </th>
+                        <th>Needs to be completed by: </th>
+                        <th>Task description: </th>
+                        <th>Completed: </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    )
+}
+
+export default Lists;
+
+
+
+
 // import React, { useState } from 'react'
 
 
