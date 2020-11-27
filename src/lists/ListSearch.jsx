@@ -5,7 +5,7 @@ const Lists = (props) => {
     const [list, setLists] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:4000/lists/getalllists', {
+        fetch('http://localhost:4000/lists/getalltasks', {
             method: 'GET',
             headers: {
                 'Content-Type' : 'application/json',
