@@ -66,3 +66,5 @@ const ListCreate = (props) => {
 }
 
 export default ListCreate;
+
+// THIS IS WHERE WE LEFT OFF, NEED TO KILL TABLE IN SERVER SIDE. THEN RETRY DOING THE CREATE ad

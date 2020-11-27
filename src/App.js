@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Sitebar from './home/Navbar';
-import Auth from './auth/Auth';
+import Sitebar from './Components/home/Navbar';
+import Auth from './Components/Auth/Auth';
 import ListIndex from './lists/ListIndex';
 
 

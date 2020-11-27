@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import ListCreate from './ListCreate';
-import Search from './lists/ListSearch';
+import Search from './ListSearch';
 
 const ListIndex = (props) => {
     const[lists, setLists] = useState([]);
