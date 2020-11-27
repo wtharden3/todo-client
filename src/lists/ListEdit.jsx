@@ -1,11 +1,10 @@
-import React, { useStae } from "react";
-import { Button, Form, FormGroup, Label, Input, Modal, ModalBody } from "reactstrap";
+import React, { useState } from "react";
+import { Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalHeader } from "reactstrap";
 
-const ListEdit = (props)
-    => {
-    const [editlistname, setEditlistName] = useState(props.listToUpdate.listname);
-    const [editDur, setEditDur] = useStae(props.listToUpdate.duration);
-    const [edittimedue, setEdittimeDue] = useStae(props.listToUpdate.timedue);
+const ListEdit = (props) => {
+    const [editlistName, setEditlistName] = useState(props.listToUpdate.listName);
+    const [editDur, setEditDur] = useState(props.listToUpdate.duration);
+    const [edittimeDue, setEdittimeDue] = useState(props.listToUpdate.timeDue);
     const [editDesc, setEditDesc] = useState(props.listToUpdate.description);
     const [editisChec, setEditisChec] = useState(props.listToUpdate.isChecked);
     
@@ -39,7 +38,7 @@ const ListEdit = (props)
    <Modal isOpen={true}>
             <ModalHeader>Enter a List</ModalHeader>
             <ModalBody>
-                <Form onSubmit={checkListUpdate}>
+                <Form onSubmit={listUpdate}>
                 <FormGroup>
           <Label htmlFor="isChecked">Edit isChecked:</Label> 
           <Input

@@ -5,7 +5,7 @@ const ListTable = (props) => {
   const deleteList = (list) => {
     fetch(`http://localhost:4000/list/${list.listName}`, {
       method: "DELETE",
-      headers: new headers({
+      headers: new Headers({
         "Content-type": "application/json",
         Authorization: props.token,
       }),
@@ -48,7 +48,7 @@ const ListTable = (props) => {
   };
 
   return (
-    <>
+    <div>
       <h3>list History</h3>
       <hr />
       <Table striped>
@@ -64,7 +64,7 @@ const ListTable = (props) => {
         </thead>
         <tbody>{listMapper()}</tbody>
       </Table>
-    </>
+    </div>
   );
 };
 export default ListTable;

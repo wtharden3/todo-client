@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
-import ListCreate from "./WorkoutCreate";
-import ListTable from "./WorkoutTable";
-import ListEdit from "./WorkoutEdit";
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import ListCreate from './ListCreate';
+import ListTable from './ListTable';
+import ListEdit from './ListEdit';
 
-const ListIndex = (props) => {
-  const [lists, setlists] = useState([]);
+const ListIndex = props => {
+   const [lists, setLists] = useState([]);
   const [updateActive, setUpdateActive] = useState(false);
   const [listToUpdate, setListUpdate] = useState({});
 
   const fetchLists = () => {
-    fetch("http://localhost:3000/list", {
-      method: "GET",
+    fetch('http://localhost:4000/lists/getalltasks', {
+      method: 'GET',
       headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: props.token,
+        'Content-Type': 'application/json',
+        'Authorization': props.token,
       }),
     })
-      .then((res) => res.json())
-      .then((logData) => {
+      .then(res => res.json())
+      .then(logData => {
         setLists(logData);
+        console.log(logData);
       });
   };
   useEffect(() => {
     fetchLists();
   }, []);
 
-  const editUpdateList = (list) => {
+  const editUpdateList = list => {
     setListUpdate(list);
     console.log(list);
   };
@@ -44,7 +45,7 @@ const ListIndex = (props) => {
           <ListCreate fetchLists={fetchLists} token={props.token} />
         </Col>
         <Col md="9">
-          <WorkoutTable
+          <ListTable
             lists={lists}
             editUpdateList={editUpdateList}
             updateOn={updateOn}
@@ -60,10 +61,10 @@ const ListIndex = (props) => {
             fetchLists={fetchLists}
           />
         ) : (
-          <></>
+          null
         )}
       </Row>
     </Container>
-  );
-};
+  )
+}
 export default ListIndex;

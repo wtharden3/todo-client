@@ -1,33 +1,59 @@
-import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  Button,
-} from "reactstrap";
+import React, {useState, useEffect} from 'react';
+import{Nav, NavItem, Button} from 'reactstrap';
 
 const Navbar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    let newIsOpen = !isOpen;
-    setIsOpen(newIsOpen);
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //const [token, setToken] = useState()
+  //logout not working. Need to fix
+  const logOut = () => {
+    props.setToken(undefined);
+    //will display a popup or modal alerting they are going to log out
 
-  return (
-    <Navbar color="faded" light expand="md">
-      <NavbarBrand href="/">CheckList</NavbarBrand>
-      <NavbarToggler onClick={toggle} />
-      <Collapse isOpen={isOpen} navbar>
-        <Nav classname="ml-auto" navbar>
-          <NavItem>
-            <Button onClick={props.clickLogout}>Logout</Button>
-          </NavItem>
-        </Nav>
-      </Collapse>
-    </Navbar>
-  );
-};
+  }
+
+  return(
+    // <div className="col-3">
+    //   <p>Vertical Nav</p>
+    //   <Nav vertical>
+    //     <NavItem>
+    //       NavItem 1
+    //     </NavItem>
+    //     <NavItem>
+    //       NavItem 1
+    //     </NavItem>
+    //     <NavItem>
+    //       NavItem 1
+    //     </NavItem>
+    //     <NavItem>
+    //       NavItem 1
+    //     </NavItem>
+    //     <NavItem>
+    //       <Button onClick={signUpToggle}>{onLoginPage  ? 'Switch to Signup ' : 'Switch to Login'}</Button>
+    //     </NavItem>
+    //   </Nav>
+    // </div>
+    //two different navs 1 with login signup toggle that will
+    <div className="col-3">
+      <p>Vertical Nav</p>
+      <Nav vertical>
+        <NavItem>
+          NavItem 1
+        </NavItem>
+        <NavItem>
+          NavItem 1
+        </NavItem>
+        <NavItem>
+          NavItem 1
+        </NavItem>
+        <NavItem>
+          NavItem 1
+        </NavItem>
+        <NavItem>
+          <Button onClick={logOut}>Log Out</Button>
+        </NavItem>
+      </Nav>
+    </div>
+  )
+}
+
 export default Navbar;

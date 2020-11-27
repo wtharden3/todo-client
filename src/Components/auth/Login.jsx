@@ -1,48 +1,79 @@
-import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import React, { useState, useEffect } from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  //const [token, setToken] = useState(undefined);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch("http://localhost:3000/user/login", {
-      method: "POST",
-      body: JSON.stringify({
-        user: { email: email, password: password },
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
+  useEffect(() => {
+    localStorage.setItem('token', props.token);
+  }, [props.token]);
+  
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const url = 'http://localhost:4000/user/login';
+
+    const bodyObj = {
+      email,
+      password,
+    };
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyObj),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        props.updateToken(data.sessionToken);
-      });
+      .then(res => res.json())
+      .then(data => {
+        console.log('data.token=====> ', data.token);
+        //props.setToken(data.token);
+        props.updateToken(data.token);
+      })
+      .catch(err => console.log(err));
+
+    return props.token;
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="col-md-6">
       <Form onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <FormGroup>
-          <Label htmlFor="email">Email</Label>
+          <Label for="email">Email</Label>
           <Input
-            onChange={(e) => setEmail(e.target.value)}
+            type="email"
             name="email"
+            id="emailLI"
+            placeholder="Please Enter Your Email"
             value={email}
+            onChange={e => setEmail(e.target.value)}
           />
+          <br />
+          {!email ? <span>Please enter your first name</span> : null}
         </FormGroup>
+
+        <br />
+
         <FormGroup>
-          <Label htmlFor="password">Password</Label>
+          <Label for="password">Password</Label>
           <Input
-            onChange={(e) => setPassword(e.target.value)}
+            type="password"
             name="password"
+            id="passwordLI"
+            placeholder="Please Enter Your Password"
             value={password}
+            onChange={e => setPassword(e.target.value)}
           />
+          <br />
+          {!password ? <span>Please enter your first name</span> : null}
         </FormGroup>
-        <Button type="submit">Login</Button>
+        <br />
+        <br />
+        <Button type="submit">Submit</Button>
       </Form>
     </div>
   );
