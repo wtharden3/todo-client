@@ -10,7 +10,7 @@ const ListIndex = props => {
   const [listToUpdate, setListUpdate] = useState({});
 
   const fetchLists = () => {
-    fetch('http://localhost:4000/list', {
+    fetch('http://localhost:4000/lists/getalltasks', {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',

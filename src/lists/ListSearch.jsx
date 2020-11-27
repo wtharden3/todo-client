@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import List from './list/list';
 
 const Lists = (props) => {
-    const [list, setLists] = useStata([]);
+    const [list, setLists] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:4000/lists/getalllists', {
