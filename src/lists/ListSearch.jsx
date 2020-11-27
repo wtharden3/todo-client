@@ -3,7 +3,6 @@ import List from './list/list';
 
 const Lists = (props) => {
     const [list, setLists] = useState([]);
-    
     useEffect(() => {
         fetch('http://localhost:4000/lists/getalltasks', {
             method: 'GET',
@@ -31,7 +30,7 @@ const Lists = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <List lists={lists} />
+                    <List lists={list} />
                 </tbody>
             </table>
         </div>
