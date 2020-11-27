@@ -5,7 +5,7 @@ import ListTable from './ListTable';
 import ListEdit from './ListEdit';
 
 const ListIndex = props => {
-   const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState([]);
   const [updateActive, setUpdateActive] = useState(false);
   const [listToUpdate, setListUpdate] = useState({});
 
@@ -14,7 +14,7 @@ const ListIndex = props => {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',
-        'Authorization': props.token,
+        Authorization: props.token,
       }),
     })
       .then(res => res.json())
@@ -60,11 +60,9 @@ const ListIndex = props => {
             token={props.token}
             fetchLists={fetchLists}
           />
-        ) : (
-          null
-        )}
+        ) : null}
       </Row>
     </Container>
-  )
-}
+  );
+};
 export default ListIndex;

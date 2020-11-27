@@ -1,12 +1,12 @@
-import React from "react";
-import { Table, Button } from "reactstrap";
+import React from 'react';
+import { Table, Button } from 'reactstrap';
 
-const ListTable = (props) => {
-  const deleteList = (list) => {
+const ListTable = props => {
+  const deleteList = list => {
     fetch(`http://localhost:4000/list/${list.listName}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: new Headers({
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
         Authorization: props.token,
       }),
     }).then(() => props.fetchLists());
@@ -16,14 +16,14 @@ const ListTable = (props) => {
     return props.lists.map((list, index) => {
       return (
         <tr key={index}>
-              <th scope="row">{list.id}</th>
-              <td>{list.result}</td>
-          <td>{list.listname}</td> 
+          <th scope="row">{list.owner_id}</th>
+          <td>{list.date}</td>
+          <td>{list.listName}</td>
           <td>{list.duration}</td>
-          <td>{list.timedue}</td>
-          <td>{list.descrition}</td>
-          <td>{list.ischecked}</td>
-              <td>
+          <td>{list.timeDue}</td>
+          <td>{list.description}</td>
+          <td>{`${list.isChecked}`}</td>
+          <td>
             <Button
               color="warning"
               onClick={() => {
@@ -55,11 +55,12 @@ const ListTable = (props) => {
         <thead>
           <tr>
             <th>#</th>
+            <th>date</th>
             <th>listName</th>
             <th>Duration</th>
-                      <th>timeDue</th>
-                      <th>Description</th> 
-                      <th>isChecked</th>      
+            <th>timeDue</th>
+            <th>Description</th>
+            <th>isChecked</th>
           </tr>
         </thead>
         <tbody>{listMapper()}</tbody>
