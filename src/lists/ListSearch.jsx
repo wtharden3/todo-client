@@ -2,10 +2,10 @@ import {useState, useEffect} from 'react';
 import List from './list/list';
 
 const Lists = (props) => {
-    const [list, setLists] = useStata([]);
-
+    const [list, setLists] = useState([]);
+    
     useEffect(() => {
-        fetch('http://localhost:4000/lists/getalllists', {
+        fetch('http://localhost:4000/lists/getalltasks', {
             method: 'GET',
             headers: {
                 'Content-Type' : 'application/json',
@@ -16,9 +16,10 @@ const Lists = (props) => {
         .then(data => setLists(data))
     }, [])
 
+
     return(
         <div>
-            <table>
+            <table class="sortable">
                 <thead>
                     <tr>
                         <th>Date: </th>
@@ -29,6 +30,9 @@ const Lists = (props) => {
                         <th>Completed: </th>
                     </tr>
                 </thead>
+                <tbody>
+                    <List lists={lists} />
+                </tbody>
             </table>
         </div>
     )
