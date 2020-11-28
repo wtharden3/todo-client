@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 const ListCreate = props => {
   const [date, setDate] = useState('');
   const [listName, setListname] = useState('');
-  const [duration, setDuration] = useState('');
+  const [duration, setDuration] = useState(0);
   const [timeDue, setTimedue] = useState('');
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
@@ -18,21 +18,21 @@ const ListCreate = props => {
     fetch('http://localhost:4000/lists/createlist', {
       method: 'POST',
       body: JSON.stringify({
-        list: {
-          date: date,
-          listName: listName,
-          description: description,
-          duration: duration,
-          timeDue: timeDue,
-          isChecked: isChecked,
-        },
+        date: date,
+        listName: listName,
+        description: description,
+        duration: duration,
+        timeDue: timeDue,
+        isChecked: isChecked,
       }),
       headers: new Headers({
         'Content-Type': 'application/json',
         Authorization: props.token,
       }),
     })
+      .then(console.log('Step one is happening.'))
       .then(res => res.json())
+      .then(console.log('Step two is happening.'))
       .then(listData => {
         console.log(listData);
         setDate('');
@@ -42,7 +42,8 @@ const ListCreate = props => {
         setDescription('');
         setIsChecked('');
         props.fetchLists();
-      });
+      })
+      .then(console.log('This should be completed.'));
   };
 
   return (
