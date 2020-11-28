@@ -31,11 +31,11 @@ const ListEdit = props => {
     fetch(`http://localhost:4000/lists/update/${listId}`, {
       method: 'PUT',
       body: JSON.stringify({
-        listname: editlistName,
+        listName: editlistName,
         duration: editDur,
-        timedue: edittimeDue,
+        timeDue: edittimeDue,
         description: editDesc,
-        ischecked: editisChec,
+        isChecked: editisChec,
       }),
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -52,30 +52,14 @@ const ListEdit = props => {
       <ModalHeader>Enter a List</ModalHeader>
       <ModalBody>
         <Form onSubmit={listUpdate}>
-          <FormGroup>
-            <Label htmlFor="isChecked">Edit isChecked:</Label>
-            <Input
-              name="isChecked"
-              value={editisChec}
-              onChange={e => setEditisChec(e.target.value)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="description">Edit Descrition:</Label>
-            <Input
-              name="description"
-              value={editDesc}
-              onChange={e => setEditDesc(e.target.value)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="timedue">Edit timeDue:</Label>
+        <FormGroup>
+            <Label htmlFor="listname">Edit listName:</Label>
             <Input
               type="text"
-              name="timedue"
-              value={edittimeDue}
-              onChange={e => setEdittimeDue(e.target.value)}
-            />
+              name="listname"
+              value={editlistName}
+              onChange={e => setEditlistName(e.target.value)}
+            ></Input>
           </FormGroup>
           <FormGroup>
             <Label htmlFor="duration">Edit Duration:</Label>
@@ -87,14 +71,33 @@ const ListEdit = props => {
             ></Input>
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="listname">Edit listName:</Label>
+            <Label htmlFor="timedue">Edit timeDue:</Label>
             <Input
               type="text"
-              name="listname"
-              value={editlistName}
-              onChange={e => setEditlistName(e.target.value)}
-            ></Input>
+              name="timedue"
+              value={edittimeDue}
+              onChange={e => setEdittimeDue(e.target.value)}
+            />
           </FormGroup>
+          <FormGroup>
+            <Label htmlFor="description">Edit Descrition:</Label>
+            <Input
+              name="description"
+              value={editDesc}
+              onChange={e => setEditDesc(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="isChecked">Edit isChecked:</Label>
+            <Input
+              name="isChecked"
+              value={editisChec}
+              onChange={e => setEditisChec(e.target.value)}
+            />
+          </FormGroup>
+      
+          
+          
           <Button type="submit">Update the list!</Button>
           {/**whitney */}
           <Button color="danger" onClick={toggle}>
