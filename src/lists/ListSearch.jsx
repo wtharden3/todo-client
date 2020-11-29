@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import List from './list/list';
+import "../../src/Components/assets/sorttable"
 
 const Lists = (props) => {
     const [list, setLists] = useState([]);
@@ -18,7 +19,7 @@ const Lists = (props) => {
 
     return(
         <div>
-            <table class="sortable">
+            <table className="sortable">
                 <thead>
                     <tr>
                         <th>Date: </th>
