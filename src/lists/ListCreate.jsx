@@ -53,6 +53,7 @@ const ListCreate = props => {
         <FormGroup>
           <Label htmlFor="date" />
           <Input
+            type="date"
             name="date"
             placeholder="Enter today's date: "
             value={date}
@@ -89,6 +90,7 @@ const ListCreate = props => {
         <FormGroup>
           <Label htmlFor="timeDue" />
           <Input
+          type="date"
             name="timeDue"
             placeholder="Needs completed by: "
             value={timeDue}
