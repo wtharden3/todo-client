@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Modal, ModalBody, Input, ModalHeader } from 'reactstrap';
 
 const ListCreate = props => {
   const [date, setDate] = useState('');
@@ -8,6 +8,9 @@ const ListCreate = props => {
   const [timeDue, setTimedue] = useState('');
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   useEffect(() => {
     localStorage.setItem('token', props.token);
@@ -48,7 +51,9 @@ const ListCreate = props => {
 
   return (
     <div>
-      <h3>Log a List, Here!!</h3>
+      <Modal isOpen={true} toggle={toggle}>
+      <ModalHeader>Log a List, Here!!</ModalHeader>
+      <ModalBody>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="date" />
@@ -105,8 +110,14 @@ const ListCreate = props => {
             onChange={e => setIsChecked(e.target.value)}
           />
         </FormGroup>
-        <Button type="submit">Click here to submit your task!</Button>
+        <Button type="submit">Click me to submit your task!</Button>
+        <hr></hr>
+        <Button outline color="secondary" onClick={toggle}>
+            Nevermind!
+          </Button>
       </Form>
+      </ModalBody>
+      </Modal>
     </div>
   );
 };
