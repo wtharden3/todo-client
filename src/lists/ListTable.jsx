@@ -183,7 +183,7 @@ const ListTable = props => {
       //just display
       return (
         <tr key={index}>
-          <th scope="row">{list.owner_id}</th>
+          <th scope="row">{index+1}</th>
           <td>{list.date}</td>
           <td>{list.listName}</td>
           <td>{list.duration} minutes</td>
@@ -192,22 +192,17 @@ const ListTable = props => {
           <td>{`${list.isChecked}`}</td>
           <td>
             <Button
-              color="warning"
+              color="secondary"
               onClick={() => {
                 props.editUpdateList(list);
                 props.updateOn();
-              }}
-            >
-              Update
-            </Button>
+              }}>Edit</Button>
+            <hr></hr>
             <Button
               color="danger"
               onClick={() => {
                 deleteList(list);
-              }}
-            >
-              Delete
-            </Button>
+              }}>Delete</Button>
           </td>
         </tr>
       );
@@ -216,7 +211,7 @@ const ListTable = props => {
 
   return (
     <div>
-      <h3>list History</h3>
+      <h3>Your Tasks:</h3>
       <hr />
       <Table striped>
         <thead>
