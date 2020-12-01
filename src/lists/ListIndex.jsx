@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import ListCreate from './ListCreate';
 import ListTable from './ListTable';
 import ListEdit from './ListEdit';
+import APIURL from '../helpers/environment';
 
 const ListIndex = props => {
   const [lists, setLists] = useState([]);
@@ -10,7 +11,7 @@ const ListIndex = props => {
   const [listToUpdate, setListUpdate] = useState({});
 
   const fetchLists = () => {
-    fetch('http://localhost:4000/lists/getalltasks', {
+    fetch(`${APIURL}/lists/getalltasks`, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',

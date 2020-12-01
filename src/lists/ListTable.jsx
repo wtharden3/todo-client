@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
@@ -8,7 +9,7 @@ const ListTable = props => {
   const [dueDateSorted, setDueDateSorted] = useState(false);
 
   const deleteList = list => {
-    fetch(`http://localhost:4000/lists/delete/${list.id}`, {
+    fetch(`${APIURL}/lists/delete/${list.id}`, {
       method: 'DELETE',
       headers: new Headers({
         'Content-type': 'application/json',

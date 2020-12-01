@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalHeader,
 } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 const ListEdit = props => {
   const [listId, setListId] = useState(props.listToUpdate.id);
@@ -28,7 +29,7 @@ const ListEdit = props => {
     //whitney change 1
     console.log('listid', listId);
     console.log('listToUpdate', props.listToUpdate);
-    fetch(`http://localhost:4000/lists/update/${listId}`, {
+    fetch(`${APIURL}/lists/update/${listId}`, {
       method: 'PUT',
       body: JSON.stringify({
         listName: editlistName,

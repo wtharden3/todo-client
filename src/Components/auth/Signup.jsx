@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 const Signup = () => {
   const [firstname, setFirstname] = useState('');
@@ -11,7 +12,7 @@ const Signup = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const url = 'http://localhost:4000/user/signup';
+    const url = `${APIURL}/user/signup`;
 
     const bodyObj = {
       email,

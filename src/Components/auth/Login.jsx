@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const Login = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const url = 'http://localhost:4000/user/login';
+    const url = `${APIURL}/user/login`;
 
     const bodyObj = {
       email,

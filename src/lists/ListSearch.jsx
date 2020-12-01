@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react';
 import List from './list/list';
+import APIURL from '../helpers/environment';
 
 const Lists = (props) => {
     const [list, setLists] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:4000/lists/getalltasks', {
+        fetch(`${APIURL}/lists/getalltasks`, {
             method: 'GET',
             headers: {
                 'Content-Type' : 'application/json',
