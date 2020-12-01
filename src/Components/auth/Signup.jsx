@@ -28,7 +28,7 @@ const Signup = () => {
       body: JSON.stringify(bodyObj),
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => console.log('submit data', data))
       .catch(err => console.log(err));
   };
 
@@ -97,7 +97,7 @@ const Signup = () => {
         </FormGroup>
         <Button className="py-2 w-100 rounded-pill my-3" type="submit">Submit</Button>
       </Form>
-      
+
     </div>
   );
 };

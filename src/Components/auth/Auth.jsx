@@ -17,7 +17,7 @@ const Auth = props => {
   const toggleSigninLogin = () => {
     return showSignIn ? (
       <div className="col-sm-12">
-        <div className="card-group">
+        <div className="card-group ">
           <Card>
             <CardBody className="bg-info d-flex align-items-bottom">
               <Button
