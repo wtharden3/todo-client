@@ -9,8 +9,8 @@ const ListCreate = props => {
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
 
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  // const [modal, setModal] = useState(false);
+  const toggle = () => props.setModal(true);
 
   useEffect(() => {
     localStorage.setItem('token', props.token);
@@ -38,6 +38,7 @@ const ListCreate = props => {
       .then(console.log('Step two is happening.'))
       .then(listData => {
         console.log(listData);
+        props.setModal(false);
         setDate('');
         setListname('');
         setDuration('');
@@ -51,7 +52,7 @@ const ListCreate = props => {
 
   return (
     <div>
-      <Modal isOpen={true} toggle={toggle}>
+      <Modal isOpen={props.modal} toggle={toggle}>
       <ModalHeader>Log a List, Here!!</ModalHeader>
       <ModalBody>
       <Form onSubmit={handleSubmit}>
@@ -63,7 +64,7 @@ const ListCreate = props => {
             placeholder="Enter today's date: "
             value={date}
             onChange={e => setDate(e.target.value)}
-          />
+          ></Input>
         </FormGroup>
         <FormGroup>
           <Label htmlFor="listName" />
@@ -112,9 +113,7 @@ const ListCreate = props => {
         </FormGroup>
         <Button type="submit">Click me to submit your task!</Button>
         <hr></hr>
-        <Button outline color="secondary" onClick={toggle}>
-            Nevermind!
-          </Button>
+        <Button outline color="secondary" onClick={() => props.setModal(false)}>Nevermind!</Button>
       </Form>
       </ModalBody>
       </Modal>

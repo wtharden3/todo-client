@@ -240,6 +240,15 @@ const ListTable = props => {
         </thead>
         <tbody>{listMapper()}</tbody>
       </Table>
+      <Button
+              color="primary"
+              onClick={() => {
+                props.setModal(true);
+                // props.updateOn();
+              }}
+            >
+              Click here to make a new task!
+            </Button>
     </div>
   );
 };
