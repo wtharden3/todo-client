@@ -218,7 +218,7 @@ const ListTable = props => {
     <div>
       <h3>list History</h3>
       <hr />
-      <Table striped>
+      <Table dark>
         <thead>
           <tr>
             <th>#</th>
