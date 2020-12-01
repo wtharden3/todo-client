@@ -1,4 +1,4 @@
-import { Nav, NavItem, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 const Navbar = props => {
   const logOut = () => {
@@ -6,18 +6,10 @@ const Navbar = props => {
   };
 
   return (
-    <div className="col-3">
-      <p>Vertical Nav</p>
-      <Nav vertical>
-        <NavItem>NavItem 1</NavItem>
-        <NavItem>NavItem 1</NavItem>
-        <NavItem>NavItem 1</NavItem>
-        <NavItem>NavItem 1</NavItem>
-        <NavItem>
-          <Button onClick={logOut}>Log Out</Button>
-        </NavItem>
-      </Nav>
-    </div>
+    <nav className="navbar navbar-dark bg-dark w-100">
+      <Button>Create a New Task</Button>
+      <Button onClick={logOut}>Log Out</Button>
+    </nav>
   );
 };
 
