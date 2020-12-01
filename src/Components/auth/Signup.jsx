@@ -17,89 +17,85 @@ const Signup = () => {
       email,
       password,
       firstname,
-      lastname
-    }
+      lastname,
+    };
 
     fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(bodyObj)
+      body: JSON.stringify(bodyObj),
     })
-    .then(res => res.json())
-    .then(data =>console.log(data) )
-    .catch(err => console.log(err));
-  }
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  };
 
   return (
-    <div className="col-md-6">
+    <div>
       <Form onSubmit={handleSubmit}>
-      <h1>Signup</h1>
+        <h1 className="text-center">Signup</h1>
         <FormGroup>
-          <Label for="firstname">First Name</Label>
           <Input
+            className="rounded-pill form-control-lg"
             type="text"
             name="firstname"
             id="firstnameSU"
-            placeholder="Please Enter Your First Name"
+            placeholder="First Name"
             value={firstname}
             onChange={e => setFirstname(e.target.value)}
           />
-          <br />
-          {!firstname ? <span>Please enter your first name</span> : null}
+          {!firstname ? (
+            <span className="text-danger">Please enter your first name</span>
+          ) : null}
         </FormGroup>
 
-        <br />
-        <br />
-
         <FormGroup>
-          <Label for="lastname">Last Name</Label>
           <Input
+            className="rounded-pill form-control-lg"
             type="text"
             name="lastname"
             id="lastnameSU"
-            placeholder="Please Enter Your First Name"
+            placeholder="Last Name"
             value={lastname}
             onChange={e => setLastname(e.target.value)}
           />
-          <br />
-          {!lastname ? <span>Please enter your last name</span> : null}
+          {!lastname ? (
+            <span className="text-danger">Please enter your last name</span>
+          ) : null}
         </FormGroup>
 
-        <br />
-        <br />
-
         <FormGroup>
-          <Label for="email">Email</Label>
           <Input
+            className="rounded-pill form-control-lg"
             type="email"
             name="email"
             id="emailSU"
-            placeholder="Please Enter Your Email"
+            placeholder="your@email.com"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-          <br />
-          {!email ? <span>Please enter your first name</span> : null}
+          {!email ? (
+            <span className="text-danger">Please enter your first name</span>
+          ) : null}
         </FormGroup>
 
-        <br />
-
         <FormGroup>
-          <Label for="password">Password</Label>
           <Input
+            className="rounded-pill form-control-lg"
             type="password"
             name="password"
             id="passwordSU"
-            placeholder="Please Enter A Password"
+            placeholder="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <br />
-          {!password ? <span>Please enter your first name</span> : null}
+          {!password ? (
+            <span className="text-danger">Please enter your first name</span>
+          ) : null}
         </FormGroup>
-        <Button type="submit">Submit</Button>
+        <Button className="py-2 w-100 rounded-pill my-3" type="submit">Submit</Button>
       </Form>
     </div>
   );
