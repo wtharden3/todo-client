@@ -97,6 +97,7 @@ const Signup = () => {
         </FormGroup>
         <Button className="py-2 w-100 rounded-pill my-3" type="submit">Submit</Button>
       </Form>
+      
     </div>
   );
 };
