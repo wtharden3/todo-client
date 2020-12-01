@@ -6,7 +6,6 @@ const Home = (props) => {
     <div className="row">
           <Navbar token={props.token} setToken={props.setToken}/>
           <div className="col-12">
-            Insert List components here
             <ListIndex token={props.token}/>
           </div>
 

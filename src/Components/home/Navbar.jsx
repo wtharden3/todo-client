@@ -7,8 +7,8 @@ const Navbar = props => {
 
   return (
     <nav className="navbar navbar-dark bg-dark w-100">
-      <Button>Create a New Task</Button>
-      <Button onClick={logOut}>Log Out</Button>
+      <Button className="btn-info">Create a New Task</Button>
+      <Button className="px-5 text-white btn-outline-info" onClick={logOut}>Log Out</Button>
     </nav>
   );
 };
