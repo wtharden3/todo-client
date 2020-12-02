@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Modal, ModalBody, Input, ModalHeader } from 'reactstrap';
+import { Badge, Button, Form, FormGroup, Label, Modal, ModalBody, Input, ModalHeader } from 'reactstrap';
 
 const ListCreate = props => {
   const [date, setDate] = useState('');
@@ -52,9 +52,10 @@ const ListCreate = props => {
 
   return (
     <div>
-      <Modal isOpen={props.modal} toggle={toggle}>
-      <ModalHeader>Log a List, Here!!</ModalHeader>
-      <ModalBody>
+      <Modal className="bg-dark" isOpen={props.modal} toggle={toggle}>
+      {/* <ModalHeader>Log a List, Here!!</ModalHeader> */}
+      <Badge color="dark"><h2 className="text-center">Make your new task here, dude!!</h2></Badge>
+      <ModalBody className="bg-dark">
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="date" />
@@ -103,17 +104,17 @@ const ListCreate = props => {
             onChange={e => setTimedue(e.target.value)}
           />
         </FormGroup>
-        <FormGroup>
+        {/* <FormGroup>
           <Label htmlFor="isChecked" />
           <Input
             name="isChecked"
             value={isChecked}
             onChange={e => setIsChecked(e.target.value)}
           />
-        </FormGroup>
+        </FormGroup> */}
         <Button type="submit">Click me to submit your task!</Button>
         <hr></hr>
-        <Button outline color="secondary" onClick={() => props.setModal(false)}>Nevermind!</Button>
+        <Button outline color="secondary" onClick={() => props.setModal(false)}>Nevermind, I'm good!</Button>
       </Form>
       </ModalBody>
       </Modal>

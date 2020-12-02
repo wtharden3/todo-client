@@ -183,7 +183,7 @@ const ListTable = props => {
       //just display
       return (
         <tr key={index}>
-          <th scope="row">{list.owner_id}</th>
+          <th scope="row">{index+1}</th>
           <td>{list.date}</td>
           <td>{list.listName}</td>
           <td>{list.duration} minutes</td>
