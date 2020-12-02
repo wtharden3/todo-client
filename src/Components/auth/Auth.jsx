@@ -18,7 +18,7 @@ const Auth = props => {
     return showSignIn ? (
       <div className="col-sm-12">
         <div className="card-group ">
-          <Card>
+          <Card >
             <CardBody className="bg-info d-flex align-items-bottom">
               <Button
                 className="align-self-end"
@@ -39,17 +39,18 @@ const Auth = props => {
       </div>
     ) : (
       <div className="col-sm-12">
-        <div className="card-group">
-          <Card>
+        <div className="card-group py-5">
+          <Card className="py-5">
             <CardBody>
               <Login updateToken={props.updateToken} />
             </CardBody>
           </Card>
-          <Card className="bg-info text-center">
+          <Card className="bg-info text-center py-5">
             <CardBody>
-              <p className="text-white">Do you need to sign up?</p>
+              <h2 className="text-white">Don't Have an  Account?</h2>
+              <p className="text-white text-left">Click the button below to sign up and create an account.</p>
               <Button
-                className="rounded-pill text-center px-5"
+                className="rounded-pill text-center px-5 my-4 py-2 align-self-end"
                 color="secondary"
                 onClick={() => setShowSignIn(true)}
               >
