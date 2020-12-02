@@ -45,7 +45,7 @@ const ListIndex = props => {
         <Col md="3">
           <ListCreate fetchLists={fetchLists} modal={modal} setModal={setModal} token={props.token} />
         </Col>
-        <Col md="9">
+        <Col sm="12">
           <ListTable
             modal={modal}
             setModal={setModal}
