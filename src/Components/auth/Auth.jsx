@@ -65,6 +65,7 @@ const Auth = props => {
 
   return (
     <div className="container">
+      
       <div className="row no-gutters py-5">
         {/**toggle login */}
         {/**
