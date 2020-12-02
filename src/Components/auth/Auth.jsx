@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 //import {logo} from '../../assets/taskmasterlogo.png'
+import './Auth.css'
 import Login from './Login';
 import Signup from './Signup';
 import {
