@@ -7,6 +7,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
+  const [signUpFormInvalid, setSignupFormInvalid] = useState();
 
   const toggleSignUpAndThankYou = () => {
     return !isSignUpSuccessful ? (
@@ -74,6 +75,7 @@ const Signup = () => {
         <Button className="py-2 w-100 rounded-pill my-3" type="submit">
           Submit
         </Button>
+      { signUpFormInvalid ? (<p className="text-center text-danger">Please complete the signup form</p> ): null}
       </Form>
     ) : (
       <div>
@@ -107,15 +109,18 @@ const Signup = () => {
       .then(res => res.json())
       .then(data => {
         console.log('submit data', data);
-        setIsSignUpSuccessful(true);
+        if (data.message.user) {
+          console.log('oh yeah!');
+          setIsSignUpSuccessful(true);
+          setSignupFormInvalid(false);
+        } else {
+          console.log('oh no!');
+          setSignupFormInvalid(true);
+        }
       })
       .catch(err => console.log(err));
   };
 
-  return <div>
-    {
-      toggleSignUpAndThankYou()
-    }
-  </div>;
+  return <div>{toggleSignUpAndThankYou()}</div>;
 };
 export default Signup;

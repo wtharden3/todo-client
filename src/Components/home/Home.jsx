@@ -4,7 +4,7 @@ import ListIndex from '../../lists/ListIndex';
 const Home = props => {
   return (
     <div className="row">
-      <Navbar token={props.token} setToken={props.setToken} />
+      <Navbar className="mb-5" token={props.token} setToken={props.setToken} />
       <div className="col-12">
         <ListIndex token={props.token} />
       </div>

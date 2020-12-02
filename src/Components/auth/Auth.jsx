@@ -18,10 +18,11 @@ const Auth = props => {
     return showSignIn ? (
       <div className="col-sm-12">
         <div className="card-group ">
-          <Card >
-            <CardBody className="bg-info d-flex align-items-bottom">
+          <Card className="bg-info text-center pt-5">
+            <CardBody className="bg-info">
+            <h2 className="text-white">Already have an account?</h2>
               <Button
-                className="align-self-end"
+                className="rounded-pill text-center px-5 my-4 py-2 align-self-end"
                 color="secondary"
                 onClick={() => setShowSignIn(false)}
               >

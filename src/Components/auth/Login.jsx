@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 
 const Login = props => {
   const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ const Login = props => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('data.token=====> ', data.token);
+        //console.log('data.token=====> ', data.token);
         //props.setToken(data.token);
         props.updateToken(data.token);
       })
