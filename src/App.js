@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import './fontawesome';
 import Home from './Components/home/Home';
 import Auth from './Components/auth/Auth';
+
 //import ListIndex from './lists/ListIndex';
 
 const App = () => {
