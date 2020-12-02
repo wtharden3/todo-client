@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Badge, Button, Form, FormGroup, Label, Modal, ModalBody, Input, ModalHeader } from 'reactstrap';
 
 const ListCreate = props => {
   const [date, setDate] = useState('');
@@ -8,6 +8,9 @@ const ListCreate = props => {
   const [timeDue, setTimedue] = useState('');
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+
+  // const [modal, setModal] = useState(false);
+  const toggle = () => props.setModal(true);
 
   useEffect(() => {
     localStorage.setItem('token', props.token);
@@ -35,6 +38,7 @@ const ListCreate = props => {
       .then(console.log('Step two is happening.'))
       .then(listData => {
         console.log(listData);
+        props.setModal(false);
         setDate('');
         setListname('');
         setDuration('');
@@ -48,7 +52,10 @@ const ListCreate = props => {
 
   return (
     <div>
-      <h3>Log a List, Here!!</h3>
+      <Modal className="bg-dark" isOpen={props.modal} toggle={toggle}>
+      {/* <ModalHeader>Log a List, Here!!</ModalHeader> */}
+      <Badge color="dark"><h2 className="text-center">Make your new task here, dude!!</h2></Badge>
+      <ModalBody className="bg-dark">
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="date" />
@@ -58,7 +65,7 @@ const ListCreate = props => {
             placeholder="Enter today's date: "
             value={date}
             onChange={e => setDate(e.target.value)}
-          />
+          ></Input>
         </FormGroup>
         <FormGroup>
           <Label htmlFor="listName" />
@@ -97,16 +104,20 @@ const ListCreate = props => {
             onChange={e => setTimedue(e.target.value)}
           />
         </FormGroup>
-        <FormGroup>
+        {/* <FormGroup>
           <Label htmlFor="isChecked" />
           <Input
             name="isChecked"
             value={isChecked}
             onChange={e => setIsChecked(e.target.value)}
           />
-        </FormGroup>
-        <Button type="submit">Click here to submit your task!</Button>
+        </FormGroup> */}
+        <Button type="submit">Click me to submit your task!</Button>
+        <hr></hr>
+        <Button outline color="secondary" onClick={() => props.setModal(false)}>Nevermind, I'm good!</Button>
       </Form>
+      </ModalBody>
+      </Modal>
     </div>
   );
 };

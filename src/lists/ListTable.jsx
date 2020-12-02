@@ -213,7 +213,7 @@ const ListTable = props => {
     <div>
       <h3>Your Tasks:</h3>
       <hr />
-      <Table striped>
+      <Table dark>
         <thead>
           <tr>
             <th>#</th>
@@ -235,6 +235,15 @@ const ListTable = props => {
         </thead>
         <tbody>{listMapper()}</tbody>
       </Table>
+      <Button
+              color="primary"
+              onClick={() => {
+                props.setModal(true);
+                // props.updateOn();
+              }}
+            >
+              Click here to make a new task!
+            </Button>
     </div>
   );
 };
