@@ -7,7 +7,7 @@ switch (window.location.hostname) {
 
     case 'kws-taskmaster-client.herokuapp.com':
 
-        APIURL = 'https://kws-taskmaster-client.herokuapp.com'
+        APIURL = 'https://kws-taskmaster.herokuapp.com'
 }
 
 export default APIURL;
