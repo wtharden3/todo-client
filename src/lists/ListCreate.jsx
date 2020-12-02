@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Badge, Button, Form, FormGroup, Label, Modal, ModalBody, Input, ModalHeader } from 'reactstrap';
+import { Badge, Button, Form, FormGroup, Label, Modal, ModalBody, Input, ModalHeader, Toast, ToastHeader,ToastBody } from 'reactstrap';
 
 const ListCreate = props => {
   const [date, setDate] = useState('');
@@ -58,7 +58,13 @@ const ListCreate = props => {
       <ModalBody className="bg-dark">
       <Form onSubmit={handleSubmit}>
         <FormGroup>
-          <Label htmlFor="date" />
+        <div className="p-3 bg-primary my-2 rounded">
+        <Toast>
+          <ToastHeader> 
+          <Label htmlFor="date">Today's date:</Label>
+          </ToastHeader>
+          <ToastBody>
+            {/* This is a toast on a primary background — check it out! */}
           <Input
             type="date"
             name="date"
@@ -66,43 +72,78 @@ const ListCreate = props => {
             value={date}
             onChange={e => setDate(e.target.value)}
           ></Input>
+          </ToastBody>
+        </Toast>
+      </div>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="listName" />
+        <div className="p-3 bg-warning my-2 rounded">
+        <Toast>
+          <ToastHeader>
+          <Label htmlFor="listName">Name of task:</Label>
+          </ToastHeader>
+          <ToastBody> 
           <Input
             name="listName"
-            placeholder="Name of task: "
+            placeholder="Make a name for your task here: "
             value={listName}
             onChange={e => setListname(e.target.value)}
           />
+          </ToastBody>
+        </Toast>
+      </div>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="description" />
+        <div className="p-3 bg-success my-2 rounded">
+        <Toast>
+          <ToastHeader>
+          <Label htmlFor="description">Task Description</Label>
+          </ToastHeader>
+          <ToastBody>
           <Input
             name="description"
             placeholder="Enter a brief description of the task: "
             value={description}
             onChange={e => setDescription(e.target.value)}
           />
+          </ToastBody>
+        </Toast>
+      </div>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="duration" />
+        <div className="p-3 bg-warning my-2 rounded">
+        <Toast>
+          <ToastHeader>
+          <Label htmlFor="duration">Task duration</Label>
+          </ToastHeader>
+          <ToastBody>
           <Input
             name="duration"
             placeholder="Estimated time to completion: "
             value={duration}
             onChange={e => setDuration(e.target.value)}
           />
+          </ToastBody>
+        </Toast>
+      </div>
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="timeDue" />
+        <div className="p-3 bg-primary my-2 rounded">
+        <Toast>
+          <ToastHeader>
+          <Label htmlFor="timeDue">Date task is due</Label>
+          </ToastHeader>
+          <ToastBody>
           <Input
           type="date"
             name="timeDue"
-            placeholder="Needs completed by: "
+            placeholder="Enter when your task needs to be completed by: "
             value={timeDue}
             onChange={e => setTimedue(e.target.value)}
           />
+          </ToastBody>
+        </Toast>
+      </div>
         </FormGroup>
         {/* <FormGroup>
           <Label htmlFor="isChecked" />
@@ -114,7 +155,7 @@ const ListCreate = props => {
         </FormGroup> */}
         <Button type="submit">Click me to submit your task!</Button>
         <hr></hr>
-        <Button outline color="secondary" onClick={() => props.setModal(false)}>Nevermind, I'm good!</Button>
+        <Button outline color="secondary" onClick={() => props.setModal(false)}>Oh nevermind bub, I'm good! </Button>
       </Form>
       </ModalBody>
       </Modal>
