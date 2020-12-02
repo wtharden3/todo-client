@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import {
   Badge,
   Button,
-  ButtonToggle,
   Form,
   FormGroup,
-  Label,
   Input,
   Modal,
   ModalBody,
-  ModalHeader,
   Toast,
   ToastBody,
   ToastHeader 
@@ -61,7 +58,7 @@ const ListEdit = props => {
           </ToastHeader>
           <ToastBody>
           <Input
-              type="text"
+                    type="text"
               name="taskname"
               value={editlistName}
               onChange={e => setEditlistName(e.target.value)}
