@@ -7,10 +7,15 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
-  const [signUpFormInvalid, setSignupFormInvalid] = useState();
+  const [signUpFormInvalid, setSignupFormInvalid] = useState(false);
 
   const toggleSignUpAndThankYou = () => {
-    return !isSignUpSuccessful ? (
+    return isSignUpSuccessful ? (
+      <div>
+        <h1 className="text-center">Thank you!</h1>
+        <p>You have been registered. Please go to the Login Page to log in.</p>
+      </div>
+    ) : (
       <Form onSubmit={handleSubmit}>
         <h1 className="text-center">Signup</h1>
         <FormGroup>
@@ -22,10 +27,11 @@ const Signup = () => {
             placeholder="First Name"
             value={firstname}
             onChange={e => setFirstname(e.target.value)}
+            required
           />
-          {!firstname ? (
+          {/*!firstname ? (
             <span className="text-danger">Please enter your first name</span>
-          ) : null}
+          ) : null*/}
         </FormGroup>
 
         <FormGroup>
@@ -37,10 +43,11 @@ const Signup = () => {
             placeholder="Last Name"
             value={lastname}
             onChange={e => setLastname(e.target.value)}
+            required
           />
-          {!lastname ? (
+          {/*!lastname ? (
             <span className="text-danger">Please enter your last name</span>
-          ) : null}
+          ) : null*/}
         </FormGroup>
 
         <FormGroup>
@@ -52,10 +59,11 @@ const Signup = () => {
             placeholder="your@email.com"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            required
           />
-          {!email ? (
+          {/*!email ? (
             <span className="text-danger">Please enter your first name</span>
-          ) : null}
+          ) : null*/}
         </FormGroup>
 
         <FormGroup>
@@ -67,21 +75,17 @@ const Signup = () => {
             placeholder="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            required
           />
-          {!password ? (
+          {/*!password ? (
             <span className="text-danger">Please enter your first name</span>
-          ) : null}
+          ) : null*/}
         </FormGroup>
         <Button className="py-2 w-100 rounded-pill my-3" type="submit">
           Submit
         </Button>
       { signUpFormInvalid ? (<p className="text-center text-danger">Please complete the signup form</p> ): null}
       </Form>
-    ) : (
-      <div>
-        <h1 className="text-center">Thank you!</h1>
-        <p>You have been registered. Please go to the Login Page to log in.</p>
-      </div>
     );
   };
 
@@ -109,12 +113,10 @@ const Signup = () => {
       .then(res => res.json())
       .then(data => {
         console.log('submit data', data);
-        if (data.message.user) {
-          console.log('oh yeah!');
+        if (data.user) {
           setIsSignUpSuccessful(true);
           setSignupFormInvalid(false);
         } else {
-          console.log('oh no!');
           setSignupFormInvalid(true);
         }
       })

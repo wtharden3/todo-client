@@ -153,7 +153,7 @@ const ListCreate = props => {
             onChange={e => setIsChecked(e.target.value)}
           />
         </FormGroup> */}
-        <Button type="submit">Click me to submit your task!</Button>
+        <Button className="w-100 py-3 text-center" type="submit">Click me to submit your task!</Button>
         <hr></hr>
         <Button outline color="secondary" onClick={() => props.setModal(false)}>Oh nevermind bub, I'm good! </Button>
       </Form>
