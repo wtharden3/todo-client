@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+
 div, table {
   font-family: 'Monserrat', sans-serif;
 }
@@ -16,4 +17,24 @@ h5 {
 
 .img-container{
   width: 220px;
+}
+
+.jumbo-container{
+  position: relative;
+  background-image: url('./assets/jumbo-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  min-height: 300px;
+}
+
+/* .jumbo-overlay{
+  background-color: rgba(0,0,0, .7);
+  position: absolute;
+  left: 0;
+  top: 0;
+} */
+
+.slogan-container{
+  width: 550px;
+  max-width: 75%;
 }

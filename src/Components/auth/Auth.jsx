@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-//import {logo} from '../../assets/taskmasterlogo.png'
+import slogan from '../../assets/slogan.png';
+import logo from '../../assets/taskmasterlogo.png';
 import Login from './Login';
 import Signup from './Signup';
 import {
@@ -10,7 +11,7 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
-  Jumbotron
+  Jumbotron,
 } from 'reactstrap';
 
 const Auth = props => {
@@ -74,8 +75,23 @@ const Auth = props => {
 
   return (
     <div className="container py-5">
-      <Jumbotron>
-        <p className="lead">Keeping your life in check</p>
+      <Jumbotron className="jumbo-container">
+        <div className="jumbo-overlay">
+          <p className="lead">
+            <img
+              className="w-100"
+              src={logo}
+              alt="helping you keep your life in check"
+            />
+            <div className="slogan-container">
+              <img
+                className="w-100"
+                src={slogan}
+                alt="helping you keep your life in check"
+              />
+            </div>
+          </p>
+        </div>
       </Jumbotron>
       <div className="row no-gutters">
         {toggleSigninLogin()}
