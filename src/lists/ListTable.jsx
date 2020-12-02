@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
 
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
@@ -227,8 +230,12 @@ const ListTable = props => {
               Duration <button onClick={sortDurationBtn}>Click</button>
             </th>
             <th>Due Date
+             
               <button onClick={sortDueDateBtn}>Click</button>
+              <div className="fas fa-edit"></div>
+              <i class="fas fa-edit"></i>
             </th>
+          
             <th>Description</th>
             <th>Completed</th>
           </tr>
