@@ -6,34 +6,10 @@ const Signup = () => {
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //const [signup, setSignup] = useState('');
+  const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    const url = 'http://localhost:4000/user/signup';
-
-    const bodyObj = {
-      email,
-      password,
-      firstname,
-      lastname,
-    };
-
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(bodyObj),
-    })
-      .then(res => res.json())
-      .then(data => console.log('submit data', data))
-      .catch(err => console.log(err));
-  };
-
-  return (
-    <div>
+  const toggleSignUpAndThankYou = () => {
+    return !isSignUpSuccessful ? (
       <Form onSubmit={handleSubmit}>
         <h1 className="text-center">Signup</h1>
         <FormGroup>
@@ -95,10 +71,51 @@ const Signup = () => {
             <span className="text-danger">Please enter your first name</span>
           ) : null}
         </FormGroup>
-        <Button className="py-2 w-100 rounded-pill my-3" type="submit">Submit</Button>
+        <Button className="py-2 w-100 rounded-pill my-3" type="submit">
+          Submit
+        </Button>
       </Form>
+    ) : (
+      <div>
+        <h1 className="text-center">Thank you!</h1>
+        <p>You have been registered. Please go to the Login Page to log in.</p>
+      </div>
+    );
+  };
 
-    </div>
-  );
+  //const [signup, setSignup] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const url = 'http://localhost:4000/user/signup';
+
+    const bodyObj = {
+      email,
+      password,
+      firstname,
+      lastname,
+    };
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyObj),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('submit data', data);
+        setIsSignUpSuccessful(true);
+      })
+      .catch(err => console.log(err));
+  };
+
+  return <div>
+    {
+      toggleSignUpAndThankYou()
+    }
+  </div>;
 };
 export default Signup;
