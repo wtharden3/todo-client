@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
-import { fasSort } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../fontawesome';
 
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
@@ -225,7 +224,8 @@ const ListTable = props => {
           <tr>
             <th>#</th>
             <th>Date Created
-            <button onClick={sortDateBtn}><img src=""/></button>
+            <FontAwesomeIcon icon={['fa', 'sort']} size="sm" />
+            <button onClick={sortDateBtn}></button>
             </th>
             <th>Task Name
               <button onClick={sortTaskNameBtn}>Click</button>

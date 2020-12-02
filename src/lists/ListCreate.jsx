@@ -77,7 +77,7 @@ const ListCreate = props => {
       </div>
         </FormGroup>
         <FormGroup>
-        <div className="p-3 bg-success my-2 rounded">
+        <div className="p-3 bg-warning my-2 rounded">
         <Toast>
           <ToastHeader>
           <Label htmlFor="listName">Name of task:</Label>
@@ -94,7 +94,7 @@ const ListCreate = props => {
       </div>
         </FormGroup>
         <FormGroup>
-        <div className="p-3 bg-danger my-2 rounded">
+        <div className="p-3 bg-success my-2 rounded">
         <Toast>
           <ToastHeader>
           <Label htmlFor="description">Task Description</Label>
