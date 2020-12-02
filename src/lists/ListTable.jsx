@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+// hi
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
   const [dateSorted, setDateSorted] = useState(false);
@@ -216,33 +217,41 @@ const ListTable = props => {
             <th>#</th>
             <th>
               Date Created
+              &nbsp; &nbsp;
               <FontAwesomeIcon
                 icon={['fa', 'sort']}
                 size="xl"
+                color="#17A2B8"
                 onClick={sortDateBtn}
               />
             </th>
             <th>
               Task Name
+              &nbsp; &nbsp;
               <FontAwesomeIcon
                 icon={['fa', 'sort']}
                 size="xl"
+                color="#17A2B8"
                 onClick={sortDateBtn}
               />
             </th>
             <th>
               Duration
+              &nbsp; &nbsp;
               <FontAwesomeIcon
                 icon={['fa', 'sort']}
                 size="xl"
+                color="#17A2B8"
                 onClick={sortDateBtn}
               />
             </th>
             <th>
               Due Date
+              &nbsp; &nbsp;
               <FontAwesomeIcon
                 icon={['fa', 'sort']}
                 size="xl"
+                color="#17A2B8"
                 onClick={sortDateBtn}
               />
             </th>

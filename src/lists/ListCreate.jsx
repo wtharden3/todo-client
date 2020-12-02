@@ -58,7 +58,7 @@ const ListCreate = props => {
       <ModalBody className="bg-dark">
       <Form onSubmit={handleSubmit}>
         <FormGroup>
-        <div className="p-3 bg-primary my-2 rounded">
+        <div className="p-3 bg-info my-2 rounded">
         <Toast>
           <ToastHeader> 
           <Label htmlFor="date">Today's date:</Label>
@@ -128,7 +128,7 @@ const ListCreate = props => {
       </div>
         </FormGroup>
         <FormGroup>
-        <div className="p-3 bg-primary my-2 rounded">
+        <div className="p-3 bg-info my-2 rounded">
         <Toast>
           <ToastHeader>
           <Label htmlFor="timeDue">Date task is due</Label>
