@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
+// hi
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
   const [dateSorted, setDateSorted] = useState(false);
@@ -226,20 +227,20 @@ const ListTable = props => {
             <th>Date Created
             {/* <button onClick={sortDateBtn}></button> */}
             {''}
-            <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
+            <FontAwesomeIcon icon={['fa', 'sort']} size="xl" color="#17A2B8" onClick={sortDateBtn} />
             </th>
             <th>Task Name
               {/* <button onClick={sortTaskNameBtn}>Click</button> */}
-              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
+              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" color="#17A2B8" onClick={sortDateBtn} />
             </th>
             <th>
               Duration 
               {/* <button onClick={sortDurationBtn}>Click</button> */}
-              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
+              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" color="#17A2B8" onClick={sortDateBtn} />
             </th>
             <th>Due Date
               {/* <button onClick={sortDueDateBtn}>Click</button> */}
-              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
+              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" color="#17A2B8" onClick={sortDateBtn} />
             </th>
             <th>Description</th>
             <th>Completed</th>
