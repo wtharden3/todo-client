@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
@@ -46,7 +44,6 @@ const ListTable = props => {
     return comparison;
   };
 
-//sort Date
   const compareDateDec = (a, b) => {
     const dateA = a.date.toUpperCase();
     const dateB = b.date.toUpperCase();
@@ -73,7 +70,6 @@ const ListTable = props => {
     return comparison;
   };
   
-  //sort Task Name (listName = Task Name)
   const compareTaskNameDec = (a, b) => {
     const taskNameA = a.listName.toUpperCase();
     const taskNameB = b.listName.toUpperCase();
@@ -101,7 +97,7 @@ const ListTable = props => {
     }
     return comparison;
   };
-  //sort Date
+  
   const compareDueDateDec = (a, b) => {
     const dueDateA = a.timeDue.toUpperCase();
     const dueDateB = b.timeDue.toUpperCase();
@@ -128,10 +124,6 @@ const ListTable = props => {
     return comparison;
   };
   
-
-  // SORT FUNCTIONS
-
-
   const sortDurationBtn = () => {
     if (!durationSorted) {
       props.lists.sort(compareDurationDec);
@@ -171,19 +163,12 @@ const ListTable = props => {
       setDueDateSorted(false);
     }
   }
-
-  
-
   const listMapper = () => {
     console.log('props.lists', props.lists);
 
     return props.lists.map((list, index) => {
-      //sort first -- dont use useEffect yet (or ever) (need a useEffect? to listen to button)
-      //may have a parameter in our compare fn so that we can choose which one to compare
-
       console.log(`index: ${index}, list: ${list}`);
-
-      //just display
+      
       return (
         <tr key={index}>
           <th scope="row">{index+1}</th>
@@ -194,18 +179,14 @@ const ListTable = props => {
           <td>{list.description}</td>
           <td>{`${list.isChecked}`}</td>
           <td>
-            <Button
-              color="secondary"
-              onClick={() => {
+              <FontAwesomeIcon icon={['fa', 'user-edit']} size="2x" style={{ color: 'orange' }} onClick={() => {
                 props.editUpdateList(list);
                 props.updateOn();
-              }}>Edit</Button>
-            <hr></hr>
-            <Button
-              color="danger"
-              onClick={() => {
-                deleteList(list);
-              }}>Delete</Button>
+            }} /> &nbsp;
+            &nbsp;
+              <FontAwesomeIcon icon={['fa', 'trash-alt']} size="2x" style={{ color: 'red' }} onClick={() => {
+               deleteList(list);
+              }} />
           </td>
         </tr>
       );
@@ -216,24 +197,22 @@ const ListTable = props => {
     <div>
       <h3>Your Tasks:</h3>
       <hr />
-      <Table striped>
+      <Table dark>
         <thead>
           <tr>
             <th>#</th>
             <th>Date Created
-              <button onClick={sortDateBtn}>Click</button>
+            <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
             </th>
             <th>Task Name
-              <button onClick={sortTaskNameBtn}>Click</button>
+              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
             </th>
             <th>
-              Duration <button onClick={sortDurationBtn}>Click</button>
+              Duration 
+              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
             </th>
             <th>Due Date
-             
-              <button onClick={sortDueDateBtn}>Click</button>
-              <div className="fas fa-edit"></div>
-              <i class="fas fa-edit"></i>
+              <FontAwesomeIcon icon={['fa', 'sort']} size="xl" onClick={sortDateBtn} />
             </th>
           
             <th>Description</th>
@@ -242,6 +221,14 @@ const ListTable = props => {
         </thead>
         <tbody>{listMapper()}</tbody>
       </Table>
+      <Button
+              color="primary"
+              onClick={() => {
+                props.setModal(true);
+              }}
+            >
+              Click here to make a new task!
+            </Button>
     </div>
   );
 };
