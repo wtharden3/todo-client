@@ -44,7 +44,7 @@ const ListCreate = props => {
         setDuration('');
         setTimedue('');
         setDescription('');
-        setIsChecked('');
+        setIsChecked(false);
         props.fetchLists();
       })
       .then(console.log('This should be completed.'));
