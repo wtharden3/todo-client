@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import {
+  Badge,
   Button,
   Form,
   FormGroup,
-  Label,
   Input,
   Modal,
   ModalBody,
-  ModalHeader,
+  Toast,
+  ToastBody,
+  ToastHeader 
 } from 'reactstrap';
 import APIURL from '../helpers/environment';
 
@@ -18,15 +20,11 @@ const ListEdit = props => {
   const [edittimeDue, setEdittimeDue] = useState(props.listToUpdate.timeDue);
   const [editDesc, setEditDesc] = useState(props.listToUpdate.description);
   const [editisChec, setEditisChec] = useState(props.listToUpdate.isChecked);
-  //whitney
   const [modal, setModal] = useState(false);
-
-  //whitney
   const toggle = () => setModal(!modal);
 
   const listUpdate = (event, list) => {
     event.preventDefault();
-    //whitney change 1
     console.log('listid', listId);
     console.log('listToUpdate', props.listToUpdate);
     fetch(`${APIURL}/lists/update/${listId}`, {
@@ -49,61 +47,79 @@ const ListEdit = props => {
   };
 
   return (
-    <Modal isOpen={true} toggle={toggle}>
-      <ModalHeader>Enter a List</ModalHeader>
-      <ModalBody>
+    <Modal  isOpen={true} toggle={toggle}>
+<Badge  color="dark"><h1 className="text-center">Edit Task:</h1></Badge>
+      <ModalBody className="bg-dark">
         <Form onSubmit={listUpdate}>
-        <FormGroup>
-            <Label htmlFor="listname">Edit listName:</Label>
-            <Input
-              type="text"
-              name="listname"
+          <FormGroup>
+          <div className="p-3 bg-primary my-2 rounded">
+        <Toast>
+          <ToastHeader>
+           TaskName
+          </ToastHeader>
+          <ToastBody>
+          <Input
+                    type="text"
+              name="taskname"
               value={editlistName}
               onChange={e => setEditlistName(e.target.value)}
             ></Input>
+          </ToastBody>
+        </Toast>
+      </div>        
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="duration">Edit Duration:</Label>
-            <Input
+            <div className="p-3 bg-success my-2 rounded">
+        <Toast>
+          <ToastHeader>
+            Description
+          </ToastHeader>
+          <ToastBody>
+          <Input
+              name="description"
+              value={editDesc}
+              onChange={e => setEditDesc(e.target.value)}
+            />
+          </ToastBody>
+              </Toast>
+              </div>
+          </FormGroup>
+          <FormGroup>
+          <div className="p-3 bg-danger my-2 rounded">
+        <Toast>
+          <ToastHeader>
+            Duration
+          </ToastHeader>
+                <ToastBody>
+                <Input
               type="text"
               name="duration"
               value={editDur}
               onChange={e => setEditDur(e.target.value)}
-            ></Input>
+            ></Input>  
+          </ToastBody>
+        </Toast>
+      </div>
           </FormGroup>
           <FormGroup>
-            <Label htmlFor="timedue">Edit timeDue:</Label>
-            <Input
+            <div className="p-3 bg-warning my-2 rounded">
+        <Toast>
+          <ToastHeader>
+            TimeDue
+          </ToastHeader>
+          <ToastBody>
+          <Input
               type="text"
               name="timedue"
               value={edittimeDue}
               onChange={e => setEdittimeDue(e.target.value)}
             />
+          </ToastBody>
+        </Toast>
+      </div> 
           </FormGroup>
-          <FormGroup>
-            <Label htmlFor="description">Edit Descrition:</Label>
-            <Input
-              name="description"
-              value={editDesc}
-              onChange={e => setEditDesc(e.target.value)}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="isChecked">Edit isChecked:</Label>
-            <Input
-              name="isChecked"
-              value={editisChec}
-              onChange={e => setEditisChec(e.target.value)}
-            />
-          </FormGroup>
-      
-          
-          
-          <Button type="submit">Update the list!</Button>
-          {/**whitney */}
-          <Button color="danger" onClick={toggle}>
-            Cancel
-          </Button>
+          <Button type="submit" color="info">Edit your Task!</Button>{' '}
+          <Button type="submit" outline color="info" >Cancel</Button>
         </Form>
       </ModalBody>
     </Modal>

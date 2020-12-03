@@ -1,108 +1,119 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import APIURL from '../../helpers/environment';
-
 const Signup = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
+  const [signUpFormInvalid, setSignupFormInvalid] = useState(false);
+  
+  const toggleSignUpAndThankYou = () => {
+    return isSignUpSuccessful ? (
+      <div>
+        <h1 className="text-center">Thank you!</h1>
+        <p>You have been registered. Please go to the Login Page to log in.</p>
+      </div>
+    ) : (
+      <Form onSubmit={handleSubmit}>
+        <h1 className="text-center">Signup</h1>
+        <FormGroup>
+          <Input
+            className="rounded-pill form-control-lg"
+            type="text"
+            name="firstname"
+            id="firstnameSU"
+            placeholder="First Name"
+            value={firstname}
+            onChange={e => setFirstname(e.target.value)}
+            required
+          />
+          {/*!firstname ? (
+            <span className="text-danger">Please enter your first name</span>
+          ) : null*/}
+        </FormGroup>
+        <FormGroup>
+          <Input
+            className="rounded-pill form-control-lg"
+            type="text"
+            name="lastname"
+            id="lastnameSU"
+            placeholder="Last Name"
+            value={lastname}
+            onChange={e => setLastname(e.target.value)}
+            required
+          />
+          {/*!lastname ? (
+            <span className="text-danger">Please enter your last name</span>
+          ) : null*/}
+        </FormGroup>
+        <FormGroup>
+          <Input
+            className="rounded-pill form-control-lg"
+            type="email"
+            name="email"
+            id="emailSU"
+            placeholder="your@email.com"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+          {/*!email ? (
+            <span className="text-danger">Please enter your first name</span>
+          ) : null*/}
+        </FormGroup>
+        <FormGroup>
+          <Input
+            className="rounded-pill form-control-lg"
+            type="password"
+            name="password"
+            id="passwordSU"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+          {/*!password ? (
+            <span className="text-danger">Please enter your first name</span>
+          ) : null*/}
+        </FormGroup>
+        <Button className="py-2 w-100 rounded-pill my-3" type="submit">
+          Submit
+        </Button>
+      { signUpFormInvalid ? (<p className="text-center text-danger">Please complete the signup form</p> ): null}
+      </Form>
+    );
+  };
   //const [signup, setSignup] = useState('');
-
   const handleSubmit = e => {
     e.preventDefault();
-
     const url = `${APIURL}/user/signup`;
-
     const bodyObj = {
       email,
       password,
       firstname,
-      lastname
-    }
-
+      lastname,
+    };
     fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(bodyObj)
+      body: JSON.stringify(bodyObj),
     })
-    .then(res => res.json())
-    .then(data =>console.log(data) )
-    .catch(err => console.log(err));
-  }
-
-  return (
-    <div className="col-md-6">
-      <Form onSubmit={handleSubmit}>
-      <h1>Signup</h1>
-        <FormGroup>
-          <Label for="firstname">First Name</Label>
-          <Input
-            type="text"
-            name="firstname"
-            id="firstnameSU"
-            placeholder="Please Enter Your First Name"
-            value={firstname}
-            onChange={e => setFirstname(e.target.value)}
-          />
-          <br />
-          {!firstname ? <span>Please enter your first name</span> : null}
-        </FormGroup>
-
-        <br />
-        <br />
-
-        <FormGroup>
-          <Label for="lastname">Last Name</Label>
-          <Input
-            type="text"
-            name="lastname"
-            id="lastnameSU"
-            placeholder="Please Enter Your First Name"
-            value={lastname}
-            onChange={e => setLastname(e.target.value)}
-          />
-          <br />
-          {!lastname ? <span>Please enter your last name</span> : null}
-        </FormGroup>
-
-        <br />
-        <br />
-
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input
-            type="email"
-            name="email"
-            id="emailSU"
-            placeholder="Please Enter Your Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-          <br />
-          {!email ? <span>Please enter your first name</span> : null}
-        </FormGroup>
-
-        <br />
-
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            id="passwordSU"
-            placeholder="Please Enter A Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-          <br />
-          {!password ? <span>Please enter your first name</span> : null}
-        </FormGroup>
-        <Button type="submit">Submit</Button>
-      </Form>
-    </div>
-  );
+      .then(res => res.json())
+      .then(data => {
+        console.log('submit data', data);
+        if (data.user) {
+          setIsSignUpSuccessful(true);
+          setSignupFormInvalid(false);
+        } else {
+          setSignupFormInvalid(true);
+        }
+      })
+      .catch(err => console.log(err));
+  };
+  return <div>{toggleSignUpAndThankYou()}</div>;
 };
 export default Signup;

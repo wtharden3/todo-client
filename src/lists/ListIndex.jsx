@@ -9,6 +9,7 @@ const ListIndex = props => {
   const [lists, setLists] = useState([]);
   const [updateActive, setUpdateActive] = useState(false);
   const [listToUpdate, setListUpdate] = useState({});
+  const [modal, setModal] = useState(false);
 
   const fetchLists = () => {
     fetch(`${APIURL}/lists/getalltasks`, {
@@ -43,10 +44,12 @@ const ListIndex = props => {
     <Container>
       <Row>
         <Col md="3">
-          <ListCreate fetchLists={fetchLists} token={props.token} />
+          <ListCreate fetchLists={fetchLists} modal={modal} setModal={setModal} token={props.token} />
         </Col>
-        <Col md="9">
+        <Col sm="12">
           <ListTable
+            modal={modal}
+            setModal={setModal}
             lists={lists}
             editUpdateList={editUpdateList}
             updateOn={updateOn}
@@ -64,6 +67,7 @@ const ListIndex = props => {
         ) : null}
       </Row>
     </Container>
+    
   );
 };
 export default ListIndex;

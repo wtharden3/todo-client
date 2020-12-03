@@ -1,59 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import{Nav, NavItem, Button} from 'reactstrap';
+import { Button } from 'reactstrap';
+import Logo from '../../assets/taskmasterlogo.png';
 
-const Navbar = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  //const [token, setToken] = useState()
-  //logout not working. Need to fix
+const Navbar = props => {
   const logOut = () => {
     props.setToken(undefined);
-    //will display a popup or modal alerting they are going to log out
+  };
 
-  }
+  return (
+    <nav className="navbar navbar-dark bg-dark w-100 mb-5">
+      <div className="img-container">
+        <img className="w-100" src={Logo} alt="task master logo" />
+      </div>
 
-  return(
-    // <div className="col-3">
-    //   <p>Vertical Nav</p>
-    //   <Nav vertical>
-    //     <NavItem>
-    //       NavItem 1
-    //     </NavItem>
-    //     <NavItem>
-    //       NavItem 1
-    //     </NavItem>
-    //     <NavItem>
-    //       NavItem 1
-    //     </NavItem>
-    //     <NavItem>
-    //       NavItem 1
-    //     </NavItem>
-    //     <NavItem>
-    //       <Button onClick={signUpToggle}>{onLoginPage  ? 'Switch to Signup ' : 'Switch to Login'}</Button>
-    //     </NavItem>
-    //   </Nav>
-    // </div>
-    //two different navs 1 with login signup toggle that will
-    <div className="col-3">
-      <p>Vertical Nav</p>
-      <Nav vertical>
-        <NavItem>
-          NavItem 1
-        </NavItem>
-        <NavItem>
-          NavItem 1
-        </NavItem>
-        <NavItem>
-          NavItem 1
-        </NavItem>
-        <NavItem>
-          NavItem 1
-        </NavItem>
-        <NavItem>
-          <Button onClick={logOut}>Log Out</Button>
-        </NavItem>
-      </Nav>
-    </div>
-  )
-}
+      <Button className="px-5 text-white btn-outline-info" onClick={logOut}>
+        Log Out
+      </Button>
+    </nav>
+  );
+};
 
 export default Navbar;

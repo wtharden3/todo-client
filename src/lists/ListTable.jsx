@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
 import APIURL from '../helpers/environment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+// hi
 const ListTable = props => {
   const [durationSorted, setDurationSorted] = useState(false);
   const [dateSorted, setDateSorted] = useState(false);
@@ -44,7 +46,6 @@ const ListTable = props => {
     return comparison;
   };
 
-//sort Date
   const compareDateDec = (a, b) => {
     const dateA = a.date.toUpperCase();
     const dateB = b.date.toUpperCase();
@@ -70,12 +71,12 @@ const ListTable = props => {
     }
     return comparison;
   };
-  
+
   //sort Task Name (listName = Task Name)
   const compareTaskNameDec = (a, b) => {
     const taskNameA = a.listName.toUpperCase();
     const taskNameB = b.listName.toUpperCase();
-    console.log('taskNameA', taskNameA)
+    console.log('taskNameA', taskNameA);
 
     let comparison = 0;
     if (taskNameA > taskNameB) {
@@ -89,7 +90,7 @@ const ListTable = props => {
   const compareTaskNameAsc = (a, b) => {
     const taskNameA = a.listName.toUpperCase();
     const taskNameB = b.listName.toUpperCase();
-    console.log('taskNameA', taskNameA)
+    console.log('taskNameA', taskNameA);
 
     let comparison = 0;
     if (taskNameA < taskNameB) {
@@ -99,7 +100,7 @@ const ListTable = props => {
     }
     return comparison;
   };
-  //sort Date
+
   const compareDueDateDec = (a, b) => {
     const dueDateA = a.timeDue.toUpperCase();
     const dueDateB = b.timeDue.toUpperCase();
@@ -125,10 +126,8 @@ const ListTable = props => {
     }
     return comparison;
   };
-  
 
   // SORT FUNCTIONS
-
 
   const sortDurationBtn = () => {
     if (!durationSorted) {
@@ -141,50 +140,43 @@ const ListTable = props => {
   };
 
   const sortDateBtn = () => {
-    if (!dateSorted){
-      props.lists.sort(compareDateDec)
-      setDateSorted(true)
-    }else if(dateSorted){
-      props.lists.sort(compareDateAsc)
+    if (!dateSorted) {
+      props.lists.sort(compareDateDec);
+      setDateSorted(true);
+    } else if (dateSorted) {
+      props.lists.sort(compareDateAsc);
       setDateSorted(false);
     }
-  }
+  };
 
   const sortTaskNameBtn = () => {
-    if (!taskNameSorted){
-      props.lists.sort(compareTaskNameDec)
-      setTaskNameSorted(true)
-    }else if(taskNameSorted){
-      props.lists.sort(compareTaskNameAsc)
+    if (!taskNameSorted) {
+      props.lists.sort(compareTaskNameDec);
+      setTaskNameSorted(true);
+    } else if (taskNameSorted) {
+      props.lists.sort(compareTaskNameAsc);
       setTaskNameSorted(false);
     }
-  }
+  };
 
   const sortDueDateBtn = () => {
-    if (!dueDateSorted){
-      props.lists.sort(compareDueDateDec)
-      setDueDateSorted(true)
-    }else if(dueDateSorted){
-      props.lists.sort(compareDueDateAsc)
+    if (!dueDateSorted) {
+      props.lists.sort(compareDueDateDec);
+      setDueDateSorted(true);
+    } else if (dueDateSorted) {
+      props.lists.sort(compareDueDateAsc);
       setDueDateSorted(false);
     }
-  }
-
-  
-
+  };
   const listMapper = () => {
     console.log('props.lists', props.lists);
 
     return props.lists.map((list, index) => {
-      //sort first -- dont use useEffect yet (or ever) (need a useEffect? to listen to button)
-      //may have a parameter in our compare fn so that we can choose which one to compare
-
       console.log(`index: ${index}, list: ${list}`);
 
-      //just display
       return (
         <tr key={index}>
-          <th scope="row">{list.owner_id}</th>
+          <th scope="row">{index + 1}</th>
           <td>{list.date}</td>
           <td>{list.listName}</td>
           <td>{list.duration} minutes</td>
@@ -192,23 +184,24 @@ const ListTable = props => {
           <td>{list.description}</td>
           <td>{`${list.isChecked}`}</td>
           <td>
-            <Button
-              color="warning"
+            <FontAwesomeIcon
+              icon={['fa', 'user-edit']}
+              size="2x"
+              style={{ color: 'orange' }}
               onClick={() => {
                 props.editUpdateList(list);
                 props.updateOn();
               }}
-            >
-              Update
-            </Button>
-            <Button
-              color="danger"
+            />{' '}
+            &nbsp; &nbsp;
+            <FontAwesomeIcon
+              icon={['fa', 'trash-alt']}
+              size="2x"
+              style={{ color: 'red' }}
               onClick={() => {
                 deleteList(list);
               }}
-            >
-              Delete
-            </Button>
+            />
           </td>
         </tr>
       );
@@ -217,30 +210,68 @@ const ListTable = props => {
 
   return (
     <div>
-      <h3>list History</h3>
+      <h3>Your Tasks:</h3>
       <hr />
-      <Table striped>
+      <Table dark>
         <thead>
           <tr>
             <th>#</th>
-            <th>Date Created
-              <button onClick={sortDateBtn}>Click</button>
-            </th>
-            <th>Task Name
-              <button onClick={sortTaskNameBtn}>Click</button>
+            <th>
+              Date Created
+              &nbsp; &nbsp;
+              <FontAwesomeIcon
+                icon={['fa', 'sort']}
+                size="xl"
+                color="#17A2B8"
+                onClick={sortDateBtn}
+              />
             </th>
             <th>
-              Duration <button onClick={sortDurationBtn}>Click</button>
+              Task Name
+              &nbsp; &nbsp;
+              <FontAwesomeIcon
+                icon={['fa', 'sort']}
+                size="xl"
+                color="#17A2B8"
+                onClick={sortTaskNameBtn}
+              />
             </th>
-            <th>Due Date
-              <button onClick={sortDueDateBtn}>Click</button>
+            <th>
+              Duration
+              &nbsp; &nbsp;
+              <FontAwesomeIcon
+                icon={['fa', 'sort']}
+                size="xl"
+                color="#17A2B8"
+                onClick={sortDurationBtn}
+              />
             </th>
+            <th>
+              Due Date
+              &nbsp; &nbsp;
+              <FontAwesomeIcon
+                icon={['fa', 'sort']}
+                size="xl"
+                color="#17A2B8"
+                onClick={sortDueDateBtn}
+              />
+            </th>
+
             <th>Description</th>
             <th>Completed</th>
           </tr>
         </thead>
         <tbody>{listMapper()}</tbody>
       </Table>
+      <Button
+        color="info"
+        className="w-100 py-3"
+        onClick={() => {
+          props.setModal(true);
+        }}
+      >
+        Click here to make a new task!
+      </Button>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import APIURL from '../../helpers/environment';
 
-const Login = (props) => {
+const Login = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //const [token, setToken] = useState(undefined);
@@ -10,7 +10,7 @@ const Login = (props) => {
   useEffect(() => {
     localStorage.setItem('token', props.token);
   }, [props.token]);
-  
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -30,7 +30,7 @@ const Login = (props) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('data.token=====> ', data.token);
+        //console.log('data.token=====> ', data.token);
         //props.setToken(data.token);
         props.updateToken(data.token);
       })
@@ -40,41 +40,37 @@ const Login = (props) => {
   };
 
   return (
-    <div className="col-md-6">
+    <div className="py-3">
       <Form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1 className="text-center pb-3">Login</h1>
         <FormGroup>
-          <Label for="email">Email</Label>
           <Input
+            className="rounded-pill form-control-lg"
             type="email"
             name="email"
             id="emailLI"
-            placeholder="Please Enter Your Email"
+            placeholder="your@email.com"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            required
           />
-          <br />
-          {!email ? <span>Please enter your first name</span> : null}
         </FormGroup>
 
-        <br />
-
         <FormGroup>
-          <Label for="password">Password</Label>
           <Input
+            className="rounded-pill form-control-lg"
             type="password"
             name="password"
             id="passwordLI"
-            placeholder="Please Enter Your Password"
+            placeholder="*******"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            required
           />
-          <br />
-          {!password ? <span>Please enter your first name</span> : null}
         </FormGroup>
-        <br />
-        <br />
-        <Button type="submit">Submit</Button>
+        <Button className="rounded-pill w-100 my-3 py-2" type="submit">
+          Submit
+        </Button>
       </Form>
     </div>
   );
